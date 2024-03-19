@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Example</title>
+    <style>
+        /* Add any CSS styles here */
+        #my-canvas {
+            border: 1px solid black;
+            height: 100vh;
+            width: 100vw;
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas element -->
+    <canvas id="my-canvas"></canvas>
+
+    <!-- JavaScript code to draw on the canvas -->
+    <script>
+        // Get the canvas element
+        var canvas = document.getElementById("my-canvas");
+
+        // Check if the browser supports the canvas element
+        if (canvas.getContext) {
+            // Get the 2D drawing context
+            var ctx = canvas.getContext("2d");
+
+            // Set the canvas width and height
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            // Run a for loop three times
+            for (var i = 0; i < 1100; i++) {
+                // Generate random coordinates for the circle
+                var x = Math.random() * canvas.width; // Random x-coordinate within canvas width
+                var y = Math.random() * canvas.height; // Random y-coordinate within canvas height
+
+                // Draw a blue-bordered circle with a 10px radius at random position
+                ctx.beginPath(); // Begin the path for the circle
+                ctx.arc(x, y, 8, 0, 2 * Math.PI); // Draw the circle at random position with a radius of 10px
+                ctx.strokeStyle = "blue"; // Set stroke color to blue
+                ctx.lineWidth = 2; // Set border width to 2px
+                ctx.fillStyle = "none"; // Set fill color to none
+                ctx.stroke(); // Stroke the circle to apply border
+            }
+        } else {
+            // Canvas not supported fallback
+            alert("Your browser does not support HTML5 canvas.");
+        }
+    </script>
+</body>
+</html>
